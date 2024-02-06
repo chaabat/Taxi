@@ -9,6 +9,7 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Auth\exception;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
@@ -22,6 +23,15 @@ class RegisteredUserController extends Controller
     {
         return view('auth.register');
     }
+    public function createPassager(): View
+    {
+        return view('auth.registrePassager', ['role' => 'passager']);
+    }
+
+    public function createChauffeur(): View
+    {
+        return view('auth.registreChauffeur', ['role' => 'chauffeur']);
+    }
 
     /**
      * Handle an incoming registration request.
@@ -30,22 +40,49 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+        // try{c    
+
+
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'picture' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
+            'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
+            'role' => ['nullable', 'string', 'max:255'],
+            'phone' => ['nullable', 'string', 'max:255'],
+            'description' => ['nullable', 'string'],
+            'matricule' => ['nullable', 'string', 'max:255'],
+            'location' => ['nullable', 'string', 'max:255'],
+            'statut' => ['nullable', 'string', 'max:255'],
+            'payment' => ['nullable', 'string', 'max:255'],
         ]);
 
-        $user = User::create([
+        $data = [
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-        ]);
+            'role' => $request->role,
+            'phone' => $request->phone,
+            'description' => $request->description,
+            'matricule' => $request->matricule,
+            'location' => $request->location,
+            'statut' => $request->statut,
+            'payment' => $request->payment,
+        ];
+
+        if ($request->hasFile('picture')) {
+            $data['picture'] = $request->picture->store('public/photos');
+        }
+
+        $user = User::create($data);
 
         event(new Registered($user));
 
         Auth::login($user);
 
         return redirect(RouteServiceProvider::HOME);
+        // }catch(\exception $e){
+        //     dd($e->getmessage());
+        // }
     }
 }

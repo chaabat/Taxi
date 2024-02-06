@@ -17,7 +17,7 @@ class HomeController extends Controller
                 return view('admin.dashbord');
             } elseif ($role == 'passager') {
                 return view('passager.home');
-            } else {
+            } else if ($role == 'chauffeur'){
                 return view('chauffeur.home');
             }
         }
