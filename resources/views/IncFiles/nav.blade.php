@@ -1,12 +1,12 @@
 <nav class="relative px-4 py-4 flex justify-between items-center bg-[#ffb703]">
     <a class="text-3xl font-bold leading-none" href="#">
         <div class="flex ">    
-                <img src="{{asset('photos/logo.png')}}" class="h-10 " alt="">
+                <img src="{{asset('photos/logoo.png')}}" class="h-16 " alt="">
                 {{-- <h3>Blade</h3> --}}
       </div>
     </a>
     <div class="lg:hidden">
-        <button class="navbar-burger flex items-center text-blue-600 p-3">
+        <button class="navbar-burger flex items-center text-blue-600 p-1">
             <svg class="block h-4 w-4 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                 <title>Mobile menu</title>
                 <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
@@ -29,8 +29,10 @@
             <a href="{{ route('login') }}" class="text-[#ffb703] bg-black focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Log in</a>
 
             @if (Route::has('register'))
-                <a href="{{ route('registrePassager') }}" class="text-[#ffb703] bg-black focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Register</a>
-            @endif
+            <span data-modal-target="crud-modal" data-modal-toggle="crud-modal">
+                <button  id="add-button" class="text-[#ffb703] bg-black focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Register</button>
+            </span>
+                @endif
         @endauth
     </nav>
     @endif

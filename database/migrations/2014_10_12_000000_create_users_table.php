@@ -22,8 +22,9 @@ return new class extends Migration
             $table->string('description')->nullable();
             $table->string('matricule')->nullable();
             $table->string('location')->nullable();
-            $table->enum('statut',['disponible','indisponible','hors services'])->nullable();
+            $table->enum('statut', ['disponible', 'indisponible', 'hors services'])->nullable();
             $table->string('payment')->nullable();
+            // $table->morphs('userable');
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
