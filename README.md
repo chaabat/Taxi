@@ -1,66 +1,63 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# MonGrandTaxi - Plateforme de Réservation de Grands Taxis
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+La société MonGrandTaxi souhaite développer une plateforme de réservation de grands taxis, permettant aux utilisateurs de trouver des chauffeurs disponibles pour des trajets spécifiques, et aux chauffeurs de publier leurs disponibilités.
 
-## About Laravel
+Ce projet est développé en utilisant le framework Laravel.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Fonctionnalités Requises:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Authentification et Autorisation:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- Mise en place d'un système d'authentification avec des rôles (Passager standard, Chauffeur de taxi et Administrateur).
+- Utilisation de politiques et de gardes pour régir l'accès aux profils et aux fonctionnalités spécifiques en fonction du rôle de l'utilisateur.
+- Les utilisateurs peuvent s'inscrire en tant que passagers ou chauffeurs, et se connecter avec leurs identifiants uniques.
 
-## Learning Laravel
+### Utilisateurs et Réservations:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- Un utilisateur possède un nom, une photo de profil, un historique de trajets, et des informations de contact.
+- Les passagers peuvent réserver des taxis pour des trajets spécifiques, en indiquant le jour, le lieu de prise en charge, et la destination.
+- Les chauffeurs peuvent définir leurs disponibilités, afficher les réservations acceptées, et indiquer leur statut actuel (disponible, en cours de trajet, etc.).
+- Les passagers peuvent visualiser l'historique de leurs réservations et noter les chauffeurs après chaque trajet.
+- Un utilisateur peut annuler une réservation dans un délai spécifié.
+- Un passager peut filtrer un taxi disponible en fonction de la localisation, du type de véhicule, et des évaluations des chauffeurs.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### Chauffeurs et Gestion des Taxis:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- Un chauffeur possède un nom, une photo de profil, une description, un numéro de plaque d'immatriculation, et un type de véhicule.
+- Un chauffeur peut mettre à jour ses disponibilités.
+- Un chauffeur peut visualiser son historique de trajets et les évaluations reçues.
+- Un chauffeur peut spécifier le type de paiement qu'il accepte (espèces, carte, etc.).
+- Un chauffeur doit sélectionner son trajet.
 
-## Laravel Sponsors
+### Administration et Gestion des Utilisateurs:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+- Les administrateurs ont la possibilité de gérer les passagers, les chauffeurs, et les réservations (soft delete).
+- Les administrateurs ont la possibilité de visualiser les statistiques liées aux trajets, aux réservations, et aux évaluations.  
 
-### Premium Partners
+## Technologies Utilisées:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+- Laravel (PHP)
+- JavaScript
+- HTML5
+- CSS (avec un framework  Tailwind CSS)
 
-## Contributing
+## Installation:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+1. Cloner le répertoire du projet depuis le dépôt Git de MonGrandTaxi.
+2. Importer la base de données fournie dans le fichier SQL.
+3. Configurer la connexion à la base de données dans le fichier d'environnement `.env`.
+4. Installer les dépendances PHP en exécutant `composer install`.
+5. Générer une clé d'application Laravel en exécutant `php artisan key:generate`.
+6. Lancer l'application en exécutant `php artisan serve`.
 
-## Code of Conduct
+## Contribution:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Les contributions visant à améliorer les fonctionnalités, la sécurité et l'accessibilité de la plateforme sont les bienvenues. Veuillez suivre les normes et directives de codage établies et ouvrir une nouvelle demande de fusion pour toute modification proposée.
 
-## Security Vulnerabilities
+## Licence:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Ce projet est sous licence [MIT](LICENSE.md). Vous êtes libre d'utiliser, modifier et distribuer le code conformément aux termes de la licence.
 
-## License
+## Auteur:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Ce projet est développé par [AYOUB CHAABAT] pour MonGrandTaxi.

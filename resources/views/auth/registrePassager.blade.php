@@ -60,7 +60,7 @@
                           <div class="h-full w-full text-center flex flex-col items-center justify-center items-center  ">
                                
                                   <div class="flex flex-auto max-h-48 w-2/5 mx-auto -mt-10">
-                                  <img class="has-mask h-36 object-center" src="https://img.freepik.com/free-vector/image-upload-concept-landing-page_52683-27130.jpg?size=338&ext=jpg" alt="freepik image">
+                                  <img class="has-mask h-36 object-center" src="{{asset('photos/logoo.png')}}" alt="freepik image">
                                   </div>
                                   <p class="pointer-none text-black  "><span class="text-sm">Drag and drop  or select a file from your computer</p>
                               </div>
