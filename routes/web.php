@@ -39,7 +39,7 @@ require __DIR__.'/auth.php';
 
 // Reservations
 Route::resource('reservations',ReservationController::class);
-
+Route::post('/reservations/{reservation}/rating', [ReservationController::class, 'ratingRoute'])->name('reservations.rating');
 //Routes
 Route::resource('routes',RouteController::class);
 

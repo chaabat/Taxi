@@ -28,28 +28,14 @@ class RouteController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'depart' => 'required',
-            'destination' => 'required',
-            'date' => 'required|date',
-            'action' => 'nullable',
-            'reservation_id' => 'nullable',
-
+        Route::create([
+            'date' => $request->date,
+            'depart' => $request->depart,
+            'destination' => $request->destination,
+            'user_id' => auth()->user()->id
         ]);
-
-        // Create the route
-        $route = new Route();
-        $route->depart = $request->depart;
-        $route->destination = $request->destination;
-        $route->date = $request->date;
-        $route->action = $request->action; 
-        $route->reservation_id = $request->reservation_id;
-        $route->save();
-
-        // Redirect back with success message
-        return redirect()->route('chauffeur.home')->with('success', 'Route added successfully.');
+        return back()->with('message' , 'vous avez creer un trajet !');
     }
-    
 
     /**
      * Display the specified resource.

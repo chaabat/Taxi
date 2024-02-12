@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('destination');
             $table->date('date');
             $table->string('action')->nullable();
-            $table->foreignId('reservation_id')
+            $table->foreignId('user_id')
             ->constrained()
             ->onDelete('cascade')
             ->onUpdate('cascade');         

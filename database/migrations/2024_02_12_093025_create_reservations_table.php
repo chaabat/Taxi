@@ -15,10 +15,14 @@ return new class extends Migration
             $table->id();
             $table->string('depart');
             $table->string('destination');
-            $table->string('rating')->nullable();
+            $table->integer('rating')->default(0);
             $table->date('date');
             $table->string('favorits')->nullable();
             $table->foreignId('user_id')
+            ->constrained()
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
+            $table->foreignId('route_id')
             ->constrained()
             ->onDelete('cascade')
             ->onUpdate('cascade');
@@ -31,6 +35,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('reservations');  
+        Schema::dropIfExists('reservations');
     }
 };
