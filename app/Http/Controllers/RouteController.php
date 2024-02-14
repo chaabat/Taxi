@@ -32,7 +32,7 @@ class RouteController extends Controller
             'date' => $request->date,
             'depart' => $request->depart,
             'destination' => $request->destination,
-            'user_id' => auth()->user()->id
+            'user_id' => auth()->user()->id,
         ]);
         return back()->with('message' , 'vous avez creer un trajet !');
     }

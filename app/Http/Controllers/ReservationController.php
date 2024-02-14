@@ -12,9 +12,8 @@ class ReservationController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        // return view('')
+    public function index(){
+        
     }
 
     /**
@@ -76,17 +75,8 @@ class ReservationController extends Controller
      */
     public function show(string $id)
     {
-           // Find the reservation
-    $reservation = Reservation::findOrFail($id);
-
-    // Access the associated route and chauffeur
-    $route = $reservation->route;
-    $chauffeur = $route->user;
-
-    // Pass the reservation, route, and chauffeur to the view
-    return view('reservation.show', compact('reservation', 'route', 'chauffeur'));
-}
-    
+        
+    }
 
     /**
      * Show the form for editing the specified resource.

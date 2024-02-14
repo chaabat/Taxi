@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use \App\Models\Route;
 
 class Reservation extends Model
 {
@@ -23,4 +22,9 @@ class Reservation extends Model
     public function route(){
         return $this->belongsTo(Route::class);
     }
+
+    public function driver(){
+        return $this->belongsTo(User::class);
+    }
+
 }
