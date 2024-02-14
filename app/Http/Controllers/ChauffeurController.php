@@ -19,6 +19,6 @@ class ChauffeurController extends Controller
         $chauffeurs = User::findOrFail($id);
     
         $chauffeurs->delete();
-    return view('admin.chauffeur', compact('chauffeurs'))->with('success', 'Profile deleted successfully');
+        return redirect()->route('chauffeur.index')->with('success', 'Profile deleted successfully');
     }
 }

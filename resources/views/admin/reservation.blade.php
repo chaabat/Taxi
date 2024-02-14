@@ -7,7 +7,7 @@
       <div class="w-full overflow-x-auto">
         <table class="w-full">
           <thead>
-            <tr class="text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
+            <tr class="text-md font-semibold tracking-wide text-left text-gray-900 bg-[#ffb703] uppercase border-b border-gray-600">
               <th class="px-4 py-3">ID</th>
               <th class="px-4 py-3">Départ</th>
               <th class="px-4 py-3">Destination</th>

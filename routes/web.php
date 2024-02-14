@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdmindashController;
 use App\Http\Controllers\navController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
@@ -37,7 +38,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');;
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/admin', [AdmindashController::class, 'AdminDashboard'])->name('admin');
 
 require __DIR__ . '/auth.php';
 

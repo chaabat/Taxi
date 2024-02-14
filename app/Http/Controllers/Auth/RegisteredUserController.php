@@ -71,9 +71,8 @@ class RegisteredUserController extends Controller
         ];
 
         if ($request->hasFile('picture')) {
-            $pictureName = time() . '.' . $request->picture->extension();
-            $request->picture->storeAs('public/photos', $pictureName); 
-            $data['picture'] = $pictureName;
+            $data['picture'] =  $request->file('picture')->store('photos', "public"); 
+           
         }
 
         $user = User::create($data);

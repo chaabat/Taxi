@@ -70,13 +70,15 @@
             $chauffeur = $reservation->route->user;
             @endphp
 
+
             @if ($chauffeur->statut == 'disponible')
             <div class="flex flex-col">
                 <div class="bg-white shadow-md rounded-3xl p-4">
                     <div class="flex-none lg:flex">
                         <div class="h-full w-full lg:h-48 lg:w-48 lg:mb-0 mb-3">
-                            {{-- <img src="{{ asset($reservation->driver->picture) }}" alt="Chauffeur Picture" class="w-full object-scale-down lg:object-cover lg:h-48 rounded-2xl"> --}}
+                            <img src="{{ asset('storage/' .$chauffeur->picture ) }}" alt="Chauffeur Picture" class="w-full object-scale-down lg:object-cover lg:h-48 rounded-2xl">
                         </div>
+                        
                         <div class="flex-auto ml-3 justify-evenly py-2">
                             <div class="flex flex-wrap">
                                 <div class="w-full flex-none text-xs text-blue-700 font-medium">

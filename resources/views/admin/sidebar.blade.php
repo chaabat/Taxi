@@ -1,9 +1,9 @@
 <nav
-class="z-20 flex shrink-0 grow-0 justify-around gap-4 border-t border-gray-200 bg-white/50 p-2.5 shadow-lg backdrop-blur-lg dark:border-slate-600/60 dark:bg-slate-800/50 fixed top-2/4 -translate-y-2/4 left-6 min-h-[auto] min-w-[64px] flex-col rounded-lg border"
+class="z-20 flex bg-yellow-600 shrink-0 grow-0 justify-around gap-4 border-t border-gray-200 bg-white/50 p-2.5 shadow-lg backdrop-blur-lg dark:border-slate-600/60 dark:bg-slate-800/50 fixed top-2/4 -translate-y-2/4 left-6 min-h-[auto] min-w-[64px] flex-col rounded-lg border"
 >
 
 <a
-    href="{{ route('home') }}"
+    href="{{ route('admin') }}"
     class="flex aspect-square min-h-[32px] w-16 flex-col items-center justify-center gap-1 rounded-md p-1.5 text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-slate-800"
 >
 <svg
@@ -12,7 +12,7 @@ fill="none"
 viewBox="0 0 24 24"
 stroke-width="1.5"
 stroke="currentColor"
-class="w-6 h-6 shrink-0"
+class="w-6 h-6 shrink-0 "
 >
 <path
     stroke-linecap="round"
@@ -21,7 +21,7 @@ class="w-6 h-6 shrink-0"
 />
 </svg>
 
-    <small class="text-center text-xs font-medium"> Dashboard </small>
+    <small class="text-center text-xs font-medium text-black"> Dashboard </small>
 </a>
 <a
 href="{{ route('passager.index') }}"
@@ -43,7 +43,7 @@ class="flex aspect-square min-h-[32px] w-16 flex-col items-center justify-center
     />
     </svg>
 
-    <small class="text-center text-xs font-medium"> Passager </small>
+    <small class="text-center text-xs font-medium text-black"> Passager </small>
 </a>
 <a
 href="{{ route('chauffeur.index') }}"
@@ -64,7 +64,7 @@ class="w-6 h-6 shrink-0"
 />
 </svg>
 
-<small class="text-center text-xs font-medium"> Chauffeur </small>
+<small class="text-center text-xs font-medium text-black"> Chauffeur </small>
 </a>
 <a
 href="{{ route('reservation.index') }}"
@@ -85,7 +85,7 @@ class="w-6 h-6 shrink-0"
 />
 </svg>
 
-<small class="text-center text-xs font-medium"> Réservations </small>
+<small class="text-center text-xs font-medium text-black"> Réservations </small>
 </a>
 
 

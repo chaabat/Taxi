@@ -96,8 +96,7 @@
         <div class="relative bg-white py-6 px-6 rounded-3xl w-64 my-4 shadow-xl">
             <div class=" text-white flex items-center absolute rounded-full py-4 px-4 shadow-xl bg-yellow-500 left-4 -top-6">
               
-                <img src="{{ $trajet->user->picture }}" class="h-6" alt="{{ $trajet->user->name }}">
-                {{-- @dd($trajet->user->picture ); --}}
+                <img src="{{ 'storage/' . $trajet->user->picture }}" class="h-12 " alt="{{ $trajet->user->name }}">
             </div>
             <div class="mt-8">
                 <p class="text-xl font-semibold my-2">{{ $trajet->user->name }}</p>
