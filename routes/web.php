@@ -70,9 +70,10 @@ Route::post('/routes/search', [RouteController::class, 'searchRoutes'])->name('r
 // Route::get('/historique', function () {
 //     return view('passager.historique');
 // })->name('historique');
+
 Route::get('/historique', function () {
     return view('chauffeur.historique');
-})->name('historique');
+})->name('historique.cha');
 
 
 Route::get('/passagers', [PassagerController::class, 'index'])->name('passager.index');
@@ -86,16 +87,19 @@ Route::delete('/chauffeurs/{id}/', [ChauffeurController::class, 'delete'])->name
 
 Route::get('/reservations', [ReservController::class, 'index'])->name('reservation.index');
 Route::get('/historique', [ReservationController::class, 'historique'])->name('passager.historique');
+Route::get('/favorits', [ReservationController::class, 'favorits'])->name('passager.favorits');
 
 
 Route::delete('/reservations/{id}/', [ReservController::class, 'delete'])->name('reservation.delete');
 
+Route::put('/reservations/{reservation}/update-favorit', [ReservationController::class, 'updateFavorit'])->name('update_favorit');
+Route::put('/reservations/{reservation}/update-rating', [ReservationController::class, 'updateRating'])->name('rating');
 
 
 
 // Route::get('/historique', [HistoriqueController::class ,'index'])->name('historique.index');
 
 
-Route::get('/favorits', function () {
-    return view('passager.favorits');
-})->name('favorits');
+// Route::get('/favorits', function () {
+//     return view('passager.favorits');
+// })->name('favorits');

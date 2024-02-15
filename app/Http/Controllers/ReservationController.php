@@ -105,7 +105,7 @@ class ReservationController extends Controller
         return back();
     }
 
-    public function reserver( Route $route)
+    public function reserver(Route $route)
     {
         try {
             // Get the authenticated user
@@ -126,13 +126,44 @@ class ReservationController extends Controller
         }
     }
 
-    public function historique() {
+    public function historique()
+    {
 
-    // Get the authenticated user's reservations
-    $reservations = auth()->user()->reservations;
+        // Get the authenticated user's reservations
+        $reservations = auth()->user()->reservations;
 
-    // Pass the reservations to the view
-    return view('passager.historique', ['reservations' => $reservations]);
-    }   
- }
+        // Pass the reservations to the view
+        return view('passager.historique', ['reservations' => $reservations]);
+    }
 
+    public function favorits()
+    {
+        $favoritReservations = Reservation::where('user_id', auth()->id())
+            ->where('favorits', 1)
+            ->get();
+
+        return view('passager.favorits', ['favoritReservations' => $favoritReservations]);
+    }
+
+    public function updateFavorit(Request $request, Reservation $reservation)
+    {
+        $favorits = $reservation->favorits == '0' ? '1' : '0';
+
+        $reservation->update([
+            'favorits' => $favorits,
+        ]);
+
+        return back()->with('success', 'Favorit updated successfully.');
+    }
+
+    public function updateRating(Request $request, Reservation $reservation)
+    {
+        $rating = $request->input('rating');
+    
+        $reservation->update([
+            'rating' => $rating,
+        ]);
+    
+        return back()->with('success', 'Rating updated successfully.');
+    }
+}    

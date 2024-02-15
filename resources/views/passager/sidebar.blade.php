@@ -46,7 +46,7 @@ class="flex aspect-square min-h-[32px] w-16 flex-col items-center justify-center
     <small class="text-center text-xs font-medium"> Historique </small>
 </a>
 <a
-href="{{ route('favorits') }}"
+href="{{ route('passager.favorits') }}"
 class="flex aspect-square min-h-[32px] w-16 flex-col items-center justify-center gap-1 rounded-md p-1.5 text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-slate-800">
 
 <svg
