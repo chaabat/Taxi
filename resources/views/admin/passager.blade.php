@@ -17,7 +17,7 @@
             </tr>
           </thead>
           <tbody class="bg-white">
-            @foreach($passagers as $passager)
+            @forelse($passagers as $passager)
             <tr class="text-gray-700">
                 <td class="px-4 py-3 text-ms font-semibold border">{{ $passager->id }}</td>
 
@@ -48,8 +48,11 @@
                 
               </td>
             </tr>
-            
-               @endforeach
+            @empty
+            <tr>
+                <td colspan="7" class="text-center py-4">No passagers found.</td>
+            </tr>
+        @endforelse
           </tbody>
         </table>
       </div>

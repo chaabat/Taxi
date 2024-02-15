@@ -19,7 +19,19 @@ class Route extends Model
         'user_id'
     ];
 
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
+
+    //     public function search(string $date ,string $depart ,string $destination)   {
+
+    //         $route = Route::where('date', $date)
+    //     ->where('depart', $depart)
+    //     ->where('destination', $destination)
+    //     ->get();
+
+    // return $route;
+    //     }
+
 }

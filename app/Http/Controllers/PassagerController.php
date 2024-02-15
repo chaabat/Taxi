@@ -18,7 +18,7 @@ public function delete(Request $request){
     $passagers = User::findOrFail($id);
 
     $passagers->delete();
-return view('admin.passager', compact('passagers'))->with('success', 'Profile deleted successfully');
+    return redirect()->route('passager.index')->with('success', 'Profile deleted successfully');
 }
 
 }

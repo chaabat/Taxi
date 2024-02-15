@@ -13,18 +13,11 @@
             </svg>
         </button>
     </div>
-    {{-- <ul class="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6">
-        <li><a class="text-sm text-gray-400 hover:text-gray-500" href="#">Home</a></li>
-      
-        <li><a class="text-sm text-blue-600 font-bold" href="#">About Us</a></li>
-      
-        <li><a class="text-sm text-gray-400 hover:text-gray-500" href="#">Services</a></li>
-       
-    </ul> --}}
+  
     @if (Route::has('login'))
     <div class="p-2 text-right ">
         @auth
-            <a href="{{ url('/dashboard') }}" class="text-[#ffb703] bg-black focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Dashboard</a>
+            <a href="{{ url('home') }}" class="text-[#ffb703] bg-black focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Home</a>
         @else
             <a href="{{ route('login') }}" class="text-[#ffb703] bg-black focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Log in</a>
 

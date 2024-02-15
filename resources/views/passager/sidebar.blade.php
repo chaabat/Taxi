@@ -3,7 +3,7 @@ class="z-20 flex shrink-0 grow-0 justify-around gap-4 border-t border-gray-200 b
 >
 
 <a
-    {{-- href="{{ route('home') }}" --}}
+    href="{{ route('home') }}"
     class="flex aspect-square min-h-[32px] w-16 flex-col items-center justify-center gap-1 rounded-md p-1.5 text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-slate-800"
 >
 <svg

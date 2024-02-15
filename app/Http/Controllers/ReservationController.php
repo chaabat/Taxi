@@ -29,46 +29,36 @@ class ReservationController extends Controller
      */
     public function store(Request $request)
     {
-        //trouver les routes disponibles
-        $routes = Route::where([
-            'date' => $request->date,
-            'depart' => $request->depart,
-            'destination' => $request->destination
-        ])->get();
-
-        //verifier si y a pas des routes
-        if (is_null($routes))
-            return back()->with('message', 'y a pas des routes pour le moment');
-
-        //si y a des trajets et le chauffeur il a un statuts disponible
-
-        $routesDisponible = null;
-        $chauffeur = null;
-
+        $routes = Route::where('id', $request->id)->get();
+    
+        if ($routes->isEmpty()) {
+            return back()->with('message', 'Aucune route disponible pour le moment.');
+        }
+    
+        $routeDisponible = null;
+    
         foreach ($routes as $route) {
             if ($route->user->statut == 'disponible') {
-                $routesDisponible = $route;
-                $chauffeur = $route->user;
+                $routeDisponible = $route;
                 break;
             }
         }
-
-
-
-        if (is_null($routesDisponible))
-            return back()->with('message', 'y a pas des routes pour le moment');
-        // reserver pour le passager le trajet disponible
-
+    
+        if (is_null($routeDisponible)) {
+            return back()->with('message', 'Aucune route disponible avec un chauffeur disponible.');
+        }
+    
         $reservation = Reservation::create([
-            'date'        => $request->date,
-            'depart'      => $request->depart,
-            'destination' => $request->destination,
-            'user_id'     => auth()->user()->id,
-            'route_id'    => $routesDisponible->id
-
+            'date' => $route->date,
+            'depart' => $route->depart,
+            'destination' => $route->destination,
+            'user_id' => auth()->user()->id,
+            'route_id' => $route->id
         ]);
-        return back()->with('message', 'reservation est bien fait !');
     }
+    
+    
+    
 
     /**
      * Display the specified resource.
@@ -108,4 +98,8 @@ class ReservationController extends Controller
         $reservation->save();
         return back();
     }
+
+  
+    
+    
 }

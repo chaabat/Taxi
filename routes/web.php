@@ -13,6 +13,8 @@ use \App\Http\Controllers\RouteController;
 use App\Http\Middleware\Chauffeur;
 use Illuminate\Support\Facades\Route;
 
+use function Laravel\Prompts\search;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -46,9 +48,18 @@ require __DIR__ . '/auth.php';
 
 // Reservations
 Route::resource('reservations', ReservationController::class);
+Route::post('/routes/search', [ReservationController::class, 'store'])->name('routes.search');
+
+// Route::post('reservations', [ReservationController::class, 'search'])->name('reservations.search');
+
 Route::post('/reservations/{reservation}/rating', [ReservationController::class, 'ratingRoute'])->name('reservations.rating');
 //Routes
 Route::resource('routes', RouteController::class);
+Route::post('/routes/search', [RouteController::class, 'searchRoutes'])->name('routes.search');
+
+
+
+
 
 
 

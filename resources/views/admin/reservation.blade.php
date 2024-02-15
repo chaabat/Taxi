@@ -17,7 +17,7 @@
             </tr>
           </thead>
           <tbody class="bg-white">
-            @foreach($reservations as $reservation)
+            @forelse($reservations as $reservation)
             <tr class="text-gray-700">
             <td class="px-4 py-3 text-ms font-semibold border">{{ $reservation->id }}</td>
               <td class="px-4 py-3 text-ms font-semibold border">{{ $reservation->depart }}</td>
@@ -25,7 +25,7 @@
               <td class="px-4 py-3 text-sm border">{{ $reservation->rating }}</td>
               <td class="px-4 py-3 text-sm border">{{ $reservation->created_at }}</td>
               <td class="px-4 py-3 text-xs border">
-                <form action="{{ route('reservation.delete', $reservation->id) }}" method="POST">
+                <form action="{{ route('reservation.delete',  ['id' => $reservation->id]) }}" method="POST">
                     @csrf
                     @method('DELETE')
                     <button type="submit"
@@ -35,7 +35,11 @@
               </td>
             </tr>
             
-               @endforeach
+            @empty
+            <tr>
+                <td colspan="7" class="text-center py-4">No Reservations found.</td>
+            </tr>
+        @endforelse 
           </tbody>
         </table>
       </div>

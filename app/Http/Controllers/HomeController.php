@@ -4,23 +4,24 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 
-
+use App\Models\Route;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        if (Auth::id()) {
+        if (Auth::check()) {
             $role = auth()->user()->role;
             if ($role == 'admin') {
-                return view('admin.dashbord');
+                return view('admin.dashboard');
             } elseif ($role == 'passager') {
-                return view('passager.home');
-            } else if ($role == 'chauffeur'){
+                $routes = collect();
+                return view('passager.home', ['routes' => $routes]);
+            } elseif ($role == 'chauffeur') {
                 return view('chauffeur.home');
             }
         }
     }
 }
-
