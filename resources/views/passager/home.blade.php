@@ -43,6 +43,21 @@
                             </select>
                         </div>
                     </div>
+                    <!-- Vehicule -->
+                    <div class="w-full sm:w-1/3 px-3">
+                        <div class="mb-5">
+                            <label for="Vehicule" class="mb-3 block text-base font-medium text-[#07074D]">
+                                Vehicule
+                            </label>
+                            <select name="vehicule" id="Vehicule" class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md">
+                                <option value="Voiture">Voiture</option>
+                                <option value="Pick-up">Pick-up</option>
+                                <option value="Honda">Honda</option>
+                                <option value="Car">Car</option>
+                                <option value="Camion">Camion</option>
+                            </select>
+                        </div>
+                    </div>
                     <!-- Date -->
                     <div class="w-full sm:w-1/3 px-3">
                         <div class="mb-5">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ChauffeurPassager;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Route;
@@ -98,12 +99,6 @@ class ReservationController extends Controller
     }
 
 
-    public function ratingRoute(Request $request, Reservation $reservation)
-    {
-        $reservation->rating = $request->rating;
-        $reservation->save();
-        return back();
-    }
 
     public function reserver(Route $route)
     {
@@ -117,6 +112,15 @@ class ReservationController extends Controller
                 'date' => $route->date,
                 'depart' => $route->depart,
                 'destination' => $route->destination,
+                'route_id' => $route->id,
+            ]);
+
+            $chauffeurId = $route->user_id;
+
+            // Create a new record in the ChauffeurPassager table
+            ChauffeurPassager::create([
+                'chauffeur_id' => $chauffeurId,
+                'passager_id' => $user->id, // Pass the user's id
                 'route_id' => $route->id,
             ]);
 
@@ -135,6 +139,8 @@ class ReservationController extends Controller
         // Pass the reservations to the view
         return view('passager.historique', ['reservations' => $reservations]);
     }
+
+
 
     public function favorits()
     {
@@ -159,11 +165,26 @@ class ReservationController extends Controller
     public function updateRating(Request $request, Reservation $reservation)
     {
         $rating = $request->input('rating');
-    
+
         $reservation->update([
             'rating' => $rating,
         ]);
-    
+
         return back()->with('success', 'Rating updated successfully.');
     }
-}    
+
+
+    public function historiqueChauffeur()
+    {
+        // Get the authenticated chauffeur user
+        $chauffeurs = auth()->user();
+
+        // Get the routes reserved by passagers for the chauffeur's routes
+        $routes = Route::where('user_id', $chauffeurs->id)
+            ->whereHas('reservations')
+            ->with(['reservations.passager'])
+            ->get();
+
+        return view('chauffeur.historique', ['routes' => $routes, 'chauffeurs' => $chauffeurs]);
+    }
+}

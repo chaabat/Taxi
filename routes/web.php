@@ -86,7 +86,9 @@ Route::delete('/chauffeurs/{id}/', [ChauffeurController::class, 'delete'])->name
 
 
 Route::get('/reservations', [ReservController::class, 'index'])->name('reservation.index');
-Route::get('/historique', [ReservationController::class, 'historique'])->name('passager.historique');
+Route::get('/historique-passager', [ReservationController::class, 'historique'])->name('passager.historique');
+Route::get('/historique-chauffeur', [ReservationController::class, 'historiqueChauffeur'])->name('chauffeur.historique');
+
 Route::get('/favorits', [ReservationController::class, 'favorits'])->name('passager.favorits');
 
 

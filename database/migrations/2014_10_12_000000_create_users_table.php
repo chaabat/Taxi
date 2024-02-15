@@ -21,10 +21,10 @@ return new class extends Migration
             $table->string('phone')->nullable();
             $table->string('description')->nullable();
             $table->string('matricule')->nullable();
-            $table->string('vehicule')->nullable();
-            $table->string('location')->nullable();
-            $table->enum('statut', ['disponible', 'indisponible', 'hors services'])->nullable();
-            $table->string('payment')->nullable();
+            $table->enum('vehicule', ['Voiture', 'Pick-up', 'Honda','Car','Camion'])->nullable();
+            $table->string('average')->nullable();
+            $table->enum('statut', ['disponible', 'indisponible'])->nullable();
+            $table->enum('payment', ['Especes', 'Carte'])->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();

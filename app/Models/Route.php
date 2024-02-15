@@ -24,14 +24,20 @@ class Route extends Model
         return $this->belongsTo(User::class);
     }
 
-    //     public function search(string $date ,string $depart ,string $destination)   {
+    public function chauffeur()
+    {
+        return $this->belongsTo(User::class, 'chauffeur_id');
+    }
 
-    //         $route = Route::where('date', $date)
-    //     ->where('depart', $depart)
-    //     ->where('destination', $destination)
-    //     ->get();
+    public function reservations()
+    {
+        return $this->hasMany(Reservation::class);
+    }
 
-    // return $route;
-    //     }
-
+    public function passagers()
+    {
+        return $this->belongsToMany(User::class, 'chauffeur_passager', 'route_id', 'passager_id')
+            ->withPivot('chauffeur_id')
+            ->withTimestamps();
+    }
 }

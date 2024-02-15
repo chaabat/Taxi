@@ -19,12 +19,25 @@ class Reservation extends Model
         'route_id'
     ];
 
-    public function route(){
+    public function route()
+    {
         return $this->belongsTo(Route::class);
     }
 
-    public function driver(){
+    public function driver()
+    {
         return $this->belongsTo(User::class);
     }
 
+
+    public function chauffeur()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+
+    public function passager()
+    {
+        return $this->belongsTo(User::class, 'passager_id');
+    }
 }

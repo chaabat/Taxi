@@ -22,7 +22,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-       
+
         'name',
         'picture',
         'email',
@@ -32,10 +32,11 @@ class User extends Authenticatable
         'description',
         'matricule',
         'location',
+        'vehicule',
         'statut',
         'payment'
     ];
-    
+
 
     /**
      * The attributes that should be hidden for serialization.
@@ -57,16 +58,18 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function reservations() {
+    public function reservations()
+    {
         return $this->hasMany(Reservation::class);
     }
 
-    public function routes() {
+    public function routes()
+    {
         return $this->hasMany(Route::class);
     }
 
     public function hasReservation($routeId)
-    {   
-    return $this->reservations->where('route_id', $routeId)->isNotEmpty();
+    {
+        return $this->reservations->where('route_id', $routeId)->isNotEmpty();
     }
 }

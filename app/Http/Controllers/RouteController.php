@@ -20,7 +20,7 @@ class RouteController extends Controller
         // Retrieve routes with today's date
         $routes = Route::whereDate('date', $today)->get();
 
-        
+
 
         return view('passager.home', ['routes' => $routes]);
     }
@@ -82,16 +82,18 @@ class RouteController extends Controller
         //
     }
 
-
     public function searchRoutes(Request $request)
     {
         $depart = $request->input('depart');
         $destination = $request->input('destination');
         $date = $request->input('date');
-
+        $vehicule = $request->input('vehicule');
         $routes = Route::where('depart', $depart)
             ->where('destination', $destination)
             ->whereDate('date', $date)
+            ->whereHas('user', function ($query) use ($vehicule) {
+                $query->where('role', 'chauffeur')->where('vehicule', $vehicule)->where('statut', 'disponible');
+            })
             ->get();
 
         return view('passager.home', ['routes' => $routes]);

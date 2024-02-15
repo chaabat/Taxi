@@ -52,11 +52,12 @@ class RegisteredUserController extends Controller
             'phone' => ['nullable', 'string', 'max:255'],
             'description' => ['nullable', 'string'],
             'matricule' => ['nullable', 'string', 'max:255'],
-            'location' => ['nullable', 'string', 'max:255'],
+            'average' => ['nullable', 'string', 'max:255'],
             'statut' => ['nullable', 'string', 'max:255'],
+            'vehicule' => ['nullable', 'string', 'max:255'],
             'payment' => ['nullable', 'string', 'max:255'],
         ]);
-
+        
         $data = [
             'name' => $request->name,
             'email' => $request->email,
@@ -65,7 +66,8 @@ class RegisteredUserController extends Controller
             'phone' => $request->phone,
             'description' => $request->description,
             'matricule' => $request->matricule,
-            'location' => $request->location,
+            'average' => $request->average,
+            'vehicule' => $request->vehicule,
             'statut' => $request->statut,
             'payment' => $request->payment,
         ];

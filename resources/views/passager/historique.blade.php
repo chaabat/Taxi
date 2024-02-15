@@ -14,7 +14,7 @@
                             <th>Départ</th>
                             <th>Destination</th>
                             <th>Favorit</th> 
-                            <th>rating</th>
+                            <th>edit</th>
                         </tr>
                     </thead>
                     <tbody>

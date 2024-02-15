@@ -37,9 +37,15 @@
                                 </div>
                                 
                                 <div class="md:col-span-3">
-                                    <label class="text-sm font-bold text-black tracking-wide" for="">Location</label>
-                                    <input type="text" name="location" id="location" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="Location" />
-                                </div>
+                                    <label class="text-sm font-bold text-black tracking-wide" for="">Vehicule</label>
+                                    <select name="vehicule" id="vehicule" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50">
+                                        <option value="Voiture">Voiture</option>
+                                        <option value="Pick-up">Pick-up</option>
+                                        <option value="Honda">Honda</option>
+                                        <option value="Car">Car</option>
+                                        <option value="Camion">Camion</option>
+                                    </select>                              
+                                    </div>
                                 <div class="md:col-span-2">
                                     <label class="text-sm font-bold text-black tracking-wide" for="">Matricule</label>
                                     <input type="text" name="matricule" id="matricule" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="Matricule" />
@@ -47,14 +53,16 @@
                                
                                 <div class="md:col-span-3">
                                     <label class="text-sm font-bold text-black tracking-wide" for="">Payment</label>
-                                    <input type="text" name="payment" id="payment" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="Payment" />
-                                </div>
+                                    <select name="payment" id="payment" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50">
+                                        <option value="Especes">Especes</option>
+                                        <option value="Carte">Carte</option>
+                                    </select>                         
+                                       </div>
                                 <div class="md:col-span-2">
                                     <label class="text-sm font-bold text-black tracking-wide" for="statut">Statut</label>
                                     <select name="statut" id="statut" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50">
                                         <option value="disponible">disponible</option>
                                         <option value="indisponible">indisponible</option>
-                                        <option value="hors_service">hors service</option>
                                     </select>
                                 </div>
                                 
