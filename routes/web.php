@@ -49,6 +49,9 @@ require __DIR__ . '/auth.php';
 // Reservations
 Route::resource('reservations', ReservationController::class);
 Route::post('/routes/search', [ReservationController::class, 'store'])->name('routes.search');
+Route::post('/reserver/{route}', [ReservationController::class, 'reserver'])->name('reserver');
+
+
 
 // Route::post('reservations', [ReservationController::class, 'search'])->name('reservations.search');
 
@@ -64,9 +67,9 @@ Route::post('/routes/search', [RouteController::class, 'searchRoutes'])->name('r
 
 
 
-Route::get('/historique', function () {
-    return view('passager.historique');
-})->name('historique');
+// Route::get('/historique', function () {
+//     return view('passager.historique');
+// })->name('historique');
 Route::get('/historique', function () {
     return view('chauffeur.historique');
 })->name('historique');
@@ -82,6 +85,8 @@ Route::delete('/chauffeurs/{id}/', [ChauffeurController::class, 'delete'])->name
 
 
 Route::get('/reservations', [ReservController::class, 'index'])->name('reservation.index');
+Route::get('/historique', [ReservationController::class, 'historique'])->name('passager.historique');
+
 
 Route::delete('/reservations/{id}/', [ReservController::class, 'delete'])->name('reservation.delete');
 

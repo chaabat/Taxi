@@ -110,11 +110,18 @@
                                 <div class="flex p-4 pb-2 border-t border-gray-200"></div>
                                 <div class="flex space-x-3 text-sm font-medium">
                                     <div class="flex-auto flex space-x-3"></div>
-                                    <form action="{{ route('reservations.store') }}" method="post">
+                                    <form action="{{ route('reserver', $route) }}" method="post">
                                         @csrf
                                         <input type="hidden" name="route_id" value="{{ $route->id }}">
-                                        <button class="mb-2 md:mb-0 bg-gray-900 px-5 py-2 shadow-sm tracking-wider text-white rounded-full hover:bg-gray-800" type="submit" aria-label="like">Réserver</button>
+                                        <button id="reservationButton"
+                                                class="mb-2 md:mb-0 {{ auth()->user()->hasReservation($route->id) ? 'bg-red-500' : 'bg-gray-900' }} px-5 py-2 shadow-sm tracking-wider text-white rounded-full hover:bg-gray-800"
+                                                type="submit"
+                                                {{ auth()->user()->hasReservation($route->id) ? 'disabled' : '' }}>
+                                            {{ auth()->user()->hasReservation($route->id) ? 'Reserved' : 'Réserver' }}
+                                        </button>
                                     </form>
+                                    
+                                    
                                 </div>
                             </div>
                         </div>

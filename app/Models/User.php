@@ -63,4 +63,9 @@ class User extends Authenticatable
     public function routes() {
         return $this->hasMany(Route::class);
     }
+
+    public function hasReservation($routeId)
+{
+    return $this->reservations->where('route_id', $routeId)->isNotEmpty();
+}
 }
