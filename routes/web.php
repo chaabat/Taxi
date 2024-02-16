@@ -12,6 +12,7 @@ use App\Http\Controllers\ReservController;
 use \App\Http\Controllers\RouteController;
 use App\Http\Middleware\Chauffeur;
 use Illuminate\Support\Facades\Route;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 use function Laravel\Prompts\search;
 
@@ -41,7 +42,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::get('/admin', [AdmindashController::class, 'AdminDashboard'])->name('admin');
+Route::get('/dashbord', [AdmindashController::class, 'AdminDashboard'])->name('dashboard');
 
 require __DIR__ . '/auth.php';
 

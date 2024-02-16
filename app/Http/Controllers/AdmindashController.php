@@ -11,16 +11,14 @@ class AdmindashController extends Controller
     public function AdminDashboard()
     {
 
-        $driversCount = User::count();
-        $passengerCount = User::count();
+        $driversCount = User::where('role', 'chauffeur')->count();
+        $passengerCount = User::where('role', 'passager')->count();
         $ResrvationsCount = Reservation::count();
-        $Resrvations = Reservation::all();
 
-        return view('admin.dashbord', [
+        return view('admin.home', [
             'driversCount' => $driversCount,
             'passengerCount' => $passengerCount,
             'ResrvationsCount' => $ResrvationsCount,
-            'Resrvations' => $Resrvations,
         ]);
     }
 }

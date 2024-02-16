@@ -5,7 +5,7 @@
 <section class="container mx-auto p-6 font-mono flex justify-end">
     <div class="w-[90%] mb-8 overflow-hidden rounded-lg shadow-lg">
       <div class="w-full overflow-x-auto">
-        <table class="w-full bg-yellow-600">
+        <table class="w-full ">
           <thead>
             <tr class="text-md font-semibold tracking-wide text-left text-gray-900 bg-[#ffb703] uppercase border-b border-gray-600">
               <th class="px-4 py-3">ID</th>
