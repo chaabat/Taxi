@@ -141,13 +141,16 @@
             <form action="{{ route('update_statut', ['user' => $trajet->user_id]) }}" method="post">
                 @csrf
                 @method('PUT')
-                <div class="flex  items-center space-y-4 md:mt-0 mt-4">
-                    <select class="w-12" name="statut" id="statut">
-                        <option value="disponible">Disponible</option>
+                <div class="flex justify-center items-center space-x-4 md:mt-0 mt-4">
+                    <select class=" bg-yellow-400 w-32 py-2 px-4 border border-dashed border-2 border-black rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" name="statut" id="statut">
+                        <option class="font-mono " value="disponible">Disponible</option>
                         <option value="indisponible">Indisponible</option>
                     </select>
-                    <button type="submit">Update Statut</button>
+                    <button type="submit" >
+                       <img src="{{asset('photos/coche.png')}}" class="h-8 w-8" alt="">
+                    </button>
                 </div>
+                
             </form>
         </div>
         @endforeach 

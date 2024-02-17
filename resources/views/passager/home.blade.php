@@ -96,12 +96,12 @@
                 <div class=" text-white flex items-center left-4 -top-6">
                     <div class="flex items-center text-sm">
                       <div class="relative w-16 h-16 mr-3 rounded-full md:block">
-                      <img src="{{ asset('storage/' . optional($route)->picture) }}" class="object-cover w-full h-full rounded-full " alt="">
+                      <img src="{{ asset('storage/' . $route->user->picture) }}" class="object-cover w-full h-full rounded-full " alt="">
                       <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
                       </div>
                       <div>
-                        <p class="font-bold text-xl text-black">{{ optional($route->user)->name }}</p>
-                        <p class="text-m text-white font-bold">{{ optional($route->user)->role }}</p>
+                        <p class="font-bold text-xl text-black">{{ $route->user->name }}</p>
+                        <p class="text-m text-white font-bold">{{ $route->user->role }}</p>
                       </div>
                     </div>
                   </div>
