@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Route;
 use Carbon\Carbon;
+use App\Models\User;
+
 use Illuminate\Http\Request;
 
 class RouteController extends Controller
@@ -14,15 +16,15 @@ class RouteController extends Controller
 
     public function index()
     {
-        // Get today's date
-        $today = Carbon::today()->toDateString();
+        // // Get today's date
+        // $today = Carbon::today()->toDateString();
 
-        // Retrieve routes with today's date
-        $routes = Route::whereDate('date', $today)->get();
+        // // Retrieve routes with today's date
+        // $routes = Route::whereDate('date', $today)->get();
 
 
 
-        return view('passager.home', ['routes' => $routes]);
+        // return view('passager.home', ['routes' => $routes]);
     }
 
 
@@ -53,9 +55,9 @@ class RouteController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(User $user)
     {
-        //
+        return view('chauffeur.home', ['user' => $user]);
     }
 
     /**
@@ -98,4 +100,6 @@ class RouteController extends Controller
 
         return view('passager.home', ['routes' => $routes]);
     }
+
+   
 }

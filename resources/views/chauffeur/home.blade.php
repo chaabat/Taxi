@@ -138,6 +138,17 @@
                   </div>
                 </div>
             </div>
+            <form action="{{ route('update_statut', ['user' => $trajet->user_id]) }}" method="post">
+                @csrf
+                @method('PUT')
+                <div class="flex  items-center space-y-4 md:mt-0 mt-4">
+                    <select class="w-12" name="statut" id="statut">
+                        <option value="disponible">Disponible</option>
+                        <option value="indisponible">Indisponible</option>
+                    </select>
+                    <button type="submit">Update Statut</button>
+                </div>
+            </form>
         </div>
         @endforeach 
     </div>

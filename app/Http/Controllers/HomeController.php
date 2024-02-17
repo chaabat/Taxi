@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Route;
+use App\Models\User;
+
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
-    public function index()
+    public function index(User $user)
     {
         if (Auth::check()) {
             $role = auth()->user()->role;
@@ -17,12 +19,11 @@ class HomeController extends Controller
             } elseif ($role == 'passager') {
                 $today = Carbon::today()->toDateString();
 
-                // Retrieve routes with today's date
                 $routes = Route::whereDate('date', '=', $today)->get();
-        
+
                 return view('passager.home', ['routes' => $routes]);
             } elseif ($role == 'chauffeur') {
-                return view('chauffeur.home');
+                return view('chauffeur.home', compact('user'));
             }
         }
     }

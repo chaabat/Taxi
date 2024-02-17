@@ -21,4 +21,6 @@ class ChauffeurController extends Controller
         $chauffeurs->delete();
         return redirect()->route('chauffeur.index')->with('success', 'Profile deleted successfully');
     }
+
+  
 }

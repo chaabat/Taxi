@@ -70,8 +70,9 @@ class ReservationController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(User $user)
     {
+        // return view('chauffeur.home', ['user' => $user]);
     }
 
     /**
@@ -176,10 +177,8 @@ class ReservationController extends Controller
 
     public function historiqueChauffeur()
     {
-        // Get the authenticated chauffeur user
         $chauffeurs = auth()->user();
 
-        // Get the routes reserved by passagers for the chauffeur's routes
         $routes = Route::where('user_id', $chauffeurs->id)
             ->whereHas('reservations')
             ->with(['reservations.passager'])
@@ -187,4 +186,24 @@ class ReservationController extends Controller
 
         return view('chauffeur.historique', ['routes' => $routes, 'chauffeurs' => $chauffeurs]);
     }
+
+  
+        public function updateStatut(Request $request, $user)
+        {
+            $newStatut = $request->input('statut');
+
+            // Fetch the user based on the provided ID
+            $user = User::findOrFail($user);
+
+            // Update the user's status
+            $user->update([
+                'statut' => $newStatut,
+            ]);
+
+            // Redirect back to the profile edit page
+            return redirect()->back()->with('status', 'Statut updated successfully.');
+        }
+
+
+   
 }

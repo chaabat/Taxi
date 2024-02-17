@@ -26,16 +26,27 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-        $request->user()->fill($request->validated());
-
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
+        $user = $request->user();
+    
+        // Update the status field if it exists in the request data
+        if ($request->has('status')) {
+            $user->status = $request->input('status');
         }
-
-        $request->user()->save();
-
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+    
+        // Fill the user model with validated data
+        $user->fill($request->validated());
+    
+        // Check if email has changed and perform actions accordingly
+        if ($user->isDirty('email')) {
+            $user->email_verified_at = null;
+        }
+    
+        // Save the updated user model
+        $user->save();
+    
+        return redirect()->route('profile.edit')->with('status', 'profile-updated');
     }
+    
 
     /**
      * Delete the user's account.
@@ -57,4 +68,6 @@ class ProfileController extends Controller
 
         return Redirect::to('/');
     }
+
+   
 }

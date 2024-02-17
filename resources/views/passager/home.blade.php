@@ -164,6 +164,9 @@
                             {{ auth()->user()->hasReservation($route->id) ? 'Reserved' : 'Réserver' }}
                         </button>
                     </form>
+
+                   
+                    </form>
                 </div>
                   </div>
               </div>

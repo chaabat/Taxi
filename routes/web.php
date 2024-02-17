@@ -54,7 +54,6 @@ Route::post('/reserver/{route}', [ReservationController::class, 'reserver'])->na
 
 
 
-// Route::post('reservations', [ReservationController::class, 'search'])->name('reservations.search');
 
 Route::post('/reservations/{reservation}/rating', [ReservationController::class, 'ratingRoute'])->name('reservations.rating');
 //Routes
@@ -62,15 +61,10 @@ Route::resource('routes', RouteController::class);
 Route::post('/routes/search', [RouteController::class, 'searchRoutes'])->name('routes.search');
 
 
+Route::put('/reservations/{user}/update-statut', [ReservationController::class, 'updateStatut'])->name('update_statut');
 
 
 
-
-
-
-// Route::get('/historique', function () {
-//     return view('passager.historique');
-// })->name('historique');
 
 Route::get('/historique', function () {
     return view('chauffeur.historique');
@@ -97,12 +91,3 @@ Route::delete('/reservations/{id}/', [ReservController::class, 'delete'])->name(
 
 Route::put('/reservations/{reservation}/update-favorit', [ReservationController::class, 'updateFavorit'])->name('update_favorit');
 Route::put('/reservations/{reservation}/update-rating', [ReservationController::class, 'updateRating'])->name('rating');
-
-
-
-// Route::get('/historique', [HistoriqueController::class ,'index'])->name('historique.index');
-
-
-// Route::get('/favorits', function () {
-//     return view('passager.favorits');
-// })->name('favorits');

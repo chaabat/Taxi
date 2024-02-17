@@ -17,6 +17,6 @@ class ReservController extends Controller
         $chauffeurs = Reservation::findOrFail($id);
     
         $chauffeurs->delete();
-        return redirect()->route('reservation.index')->with('success', 'Profile deleted successfully');
+        return redirect()->back()->with('success', 'Profile deleted successfully');
     }
 }
