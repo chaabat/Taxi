@@ -15,7 +15,7 @@
                 <div class="md:flex-shrink-0">
                     <span class="text-l font-mono text-left text-black">Réservation le : </span>
                         <p class=" text-l font-mono text-left text-white">{{ $reservation->created_at }}</p>                 
-                               <img class="  rounded-full  md:w-48" src="https://randomuser.me/api/portraits/men/1.jpg" alt="Event image">
+                               {{-- <img class="  rounded-full  md:w-48" src="https://randomuser.me/api/portraits/men/1.jpg" alt="Event image"> --}}
                 </div>
 
                 <div class="flex  text-center mt-auto">

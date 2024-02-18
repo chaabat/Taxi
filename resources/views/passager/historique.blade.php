@@ -8,7 +8,6 @@
                 <h1 class="text-4xl font-bold font-mono text-center my-8">Aucune réservation trouvée. </h1>      
             @else
                 @foreach(auth()->user()->reservations as $reservation)
-              {{-- @dd($reservation->user); --}}
                     <div class="border-4 border-dashed border-black max-w-md mx-auto bg-yellow-400 rounded-xl shadow-md overflow-hidden md:max-w-2xl m-5 flex flex-col md:flex-row justify-between items-start md:items-center">
                         <div class="md:flex-shrink-0">
                             <span class="text-l font-mono text-left text-black">Réservation le : </span>

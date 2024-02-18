@@ -16,23 +16,23 @@
                         <div class="md:flex-shrink-0">
                             <span class="text-l font-mono text-left text-black">Réservation le : </span>
                                 <p class=" text-l font-mono text-left text-white">{{ $reservation->created_at }}</p>                 
-                                       <img class="h-40 w-full rounded-full object-cover md:w-48" src="https://randomuser.me/api/portraits/men/1.jpg" alt="Event image">
+                                         {{-- <img class="h-40 w-full rounded-full object-cover md:w-48" src="https://randomuser.me/api/portraits/men/1.jpg" alt="Event image"> --}}
                         </div>
                 
                         <div class="flex  text-center mt-auto">
                         </div>
-                        <div class="flex flex-col items-center md:items-start space-y-4 md:space-y-0">
+                        <div class="flex items-center space-x-4">
                             <div class="flex items-center space-x-4">
-                                <img src="{{asset('photos/depart.png')}}" class="h-8 w-8" alt="">
+                                <img src="{{ asset('photos/depart.png') }}" class="h-8 w-8" alt="">
                                 <p>{{ $reservation->depart }}</p> 
                             </div>
+                            <hr class="h-0.5 w-16 border-dashed border-2 border-black"></hr> 
                             <div class="flex items-center space-x-4">
-                                <div class="h-0.5 w-12 bg-black bg-dashed"></div> 
-                                <img src="{{asset('photos/destination.png')}}" class="h-8 w-8" alt="">
+                                <img src="{{ asset('photos/destination.png') }}" class="h-8 w-8" alt="">
                                 <p>{{ $reservation->destination }}</p> 
                             </div>
-                            
                         </div>
+                        
                        
                             <div class=" flex flex-col items-center space-y-4 md:mt-0 mt-4">
                                

@@ -7,8 +7,7 @@
     <div class="min-h-screen p-6 bg-black flex items-center justify-center">
         <div class="container max-w-screen-lg mx-auto">
             <div>
-                <h2 class="font-semibold text-xl text-[#ffb703]">Responsive Form</h2>
-                <p class="text-[#ffb703] mb-6">Form is mobile responsive. Give it a try.</p>
+                <h2 class="font-semibold text-xl text-[#ffb703]">Passager</h2>
 
                 <div class="bg-[#ffb703] rounded shadow-lg p-4 px-4 md:p-8 mb-6">
                     <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
