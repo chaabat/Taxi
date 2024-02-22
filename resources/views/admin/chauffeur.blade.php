@@ -52,6 +52,9 @@
                     </table>
                 </div>
             </div>
+            <div class="mt-8 flex justify-center">
+                {{$chauffeur->links('pagination::tailwind')}}
+            </div>
         </section>
 
         @include('admin.sidebar')

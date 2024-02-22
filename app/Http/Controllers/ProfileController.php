@@ -28,7 +28,6 @@ class ProfileController extends Controller
     {
         $user = $request->user();
     
-        // Update the status field if it exists in the request data
         if ($request->has('status')) {
             $user->status = $request->input('status');
         }

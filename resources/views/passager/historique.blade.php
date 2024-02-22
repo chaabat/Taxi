@@ -10,6 +10,7 @@
                 @foreach(auth()->user()->reservations as $reservation)
                     <div class="border-4 border-dashed border-black max-w-md mx-auto bg-yellow-400 rounded-xl shadow-md overflow-hidden md:max-w-2xl m-5 flex flex-col md:flex-row justify-between items-start md:items-center">
                         <div class="md:flex-shrink-0">
+                       
                             <span class="text-l font-mono text-left text-black">Réservation le : </span>
                                 <p class=" text-l font-mono text-left text-white">{{ $reservation->created_at }}</p>                 
                                       
@@ -27,9 +28,9 @@
                             <div class="flex items-center space-x-4">
                                 <img src="{{ asset('photos/destination.png') }}" class="h-8 w-8" alt="">
                                 <p>{{ $reservation->destination }}</p> 
-                            </div>
+                            </div>     
                         </div>
-                        
+                    
                         
                             
                             
@@ -63,9 +64,44 @@
                                     </div>
                                     
                                 </form>
-
+                              
+                                
+                                
                             </div>
+                            
                         </div>
+                      
+                        <div class="flex items-center justify-center">  
+                            <form action="{{ route('commentaire', $reservation->id) }}" method="POST">
+                                @csrf
+                               
+                              <input type="text" name="commentaire" >
+                             
+                        
+                                <button type="submit" class="h-12 w-12" >
+                                    comment
+                                </button>
+                            </form>
+                        </div>
+
+                        <div class="flex items-center justify-center">  
+                            <form action="{{ route('reservations.destroy', $reservation->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                        
+                                @php
+                                    $day = now()->subHours(24);
+                                    $reservationDate = $reservation->created_at;
+                                    $time = $reservationDate->lte($day);
+                                @endphp
+                        
+                                <button type="submit" class="h-12 w-12" {{ $time ? 'disabled' : '' }}>
+                                    <img src="{{ asset('photos/annule.png') }}" alt="Cancel">
+                                </button>
+                            </form>
+                        </div>
+                        
+                     
                     </div>
                 @endforeach
             @endif

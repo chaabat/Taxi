@@ -18,12 +18,8 @@
                                 Départ
                             </label>
                             <select name="depart" id="depart" class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md">
-                                <option value="hay wrida 1">hay wrida 1</option>
-                                <option value="hay wrida 2">hay wrida 2</option>
-                                <option value="kores">kores</option>
-                                <option value="medina">medina</option>
-                                <option value="hay anas">hay anas</option>
-                                <option value="jrayfat">jrayfat</option>
+                                <option value=""></option>
+                               
                             </select>
                         </div>
                     </div>
@@ -34,12 +30,8 @@
                                 Destination
                             </label>
                             <select name="destination" id="destination" class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md">
-                                <option value="hay wrida 1">hay wrida 1</option>
-                                <option value="hay wrida 2">hay wrida 2</option>
-                                <option value="kores">kores</option>
-                                <option value="medina">medina</option>
-                                <option value="hay anas">hay anas</option>
-                                <option value="jrayfat">jrayfat</option>
+                                <option value=""></option>
+                               
                             </select>
                         </div>
                     </div>
@@ -64,7 +56,7 @@
                             <label for="destination" class="mb-3 block text-xl font-solid text-white font-mono">
                                 Date
                             </label>
-                            <input type="date" name="date" id="date" class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+                            <input min="{{ now()->timezone('Africa/Casablanca')->format('Y-m-d') }}" max="{{ now()->timezone('Africa/Casablanca')->addMonth()->format('Y-m-d') }}"  type="date" name="date" id="date" class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
                         </div>
                     </div>
                 </div>
@@ -80,7 +72,6 @@
     </section>    
 
 
-        {{-- lllllllllllllllllllllllllllll --}}
         
         <h1 class="text-4xl font-bold font-mono text-center my-8">Les Réservations Disponnible </h1>      
         <div class="container mx-auto p-6 font-mono flex justify-end w-[80%]">
@@ -184,5 +175,6 @@
   
 
    
+    <script src="ville.js"></script>
     
 </x-app-layout>

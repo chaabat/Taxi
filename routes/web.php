@@ -50,6 +50,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/favorits', [ReservationController::class, 'favorits'])->name('passager.favorits');
     Route::put('/reservations/{reservation}/update-favorit', [ReservationController::class, 'updateFavorit'])->name('update_favorit');
     Route::put('/reservations/{reservation}/update-rating', [ReservationController::class, 'updateRating'])->name('rating');
+    Route::delete('/reservations/{reservation}', [ReservationController::class, 'destroy'])->name('reservations.destroy');
+    Route::post('/reservations/{id}/commentaire', [ReservationController::class, 'commentaire'])->name('commentaire');
+
+
 
     // Routes de gestion des passagers
     Route::get('/passagers', [PassagerController::class, 'index'])->name('passager.index');
@@ -61,11 +65,10 @@ Route::middleware('auth')->group(function () {
 
     // Routes de gestion des réservations
     Route::resource('routes', RouteController::class);
-    Route::post('/routes/search', [RouteController::class, 'searchRoutes'])->name('routes.search');
+    Route::post('/home', [RouteController::class, 'searchRoutes'])->name('routes.search');
 
 
     // Routes de gestion des réservations
     Route::get('/reservations', [ReservController::class, 'index'])->name('reservation.index');
     Route::delete('/reservations/{id}/', [ReservController::class, 'delete'])->name('reservation.delete');
 });
-

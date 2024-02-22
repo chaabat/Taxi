@@ -30,40 +30,31 @@ class ReservationController extends Controller
      */
     public function store(Request $request)
     {
-        //trouver les routes disponibles
-        $routes = Route::where('id', $request->id)->get();
+        $routesDisponibles = Route::where('date', $request->date)
+            ->where('depart', $request->depart)
+            ->where('destination', $request->destination)
+            ->whereHas('user', function ($query) {
+                $query->where('statut', 'disponible');
+            })
+            ->get();
 
-        //verifier si y a pas des routes
-        if (is_null($routes))
-            return back()->with('message', 'y a pas des routes pour le moment');
-
-        //si y a des trajets et le chauffeur il a un statuts disponible
-
-        $routesDisponible = null;
-        $chauffeur = null;
-
-        foreach ($routes as $route) {
-            if ($route->user->statut == 'disponible') {
-                $routesDisponible = $route;
-                $chauffeur = $route->user;
-                break;
-            }
+        // Vérifier si des routes sont disponibles
+        if ($routesDisponibles->isEmpty()) {
+            return back()->with('message', 'Aucune route disponible pour le moment.');
         }
 
+        // Sélectionner la première route disponible
+        $routeDisponible = $routesDisponibles->first();
 
-
-        if (is_null($routesDisponible))
-            return back()->with('message', 'y a pas des routes pour le moment');
-        // reserver pour le passager le trajet disponible
-
+        // Créer la réservation pour le passager sur la route disponible
         $reservation = Reservation::create([
-            'date'        => $request->date,
-            'depart'      => $request->depart,
+            'date' => $request->date,
+            'depart' => $request->depart,
             'destination' => $request->destination,
-            'user_id'     => auth()->user()->id,
-            'route_id'    => $routesDisponible->id
-
+            'user_id' => auth()->user()->id,
+            'route_id' => $routeDisponible->id
         ]);
+
         return redirect()->route('passager.historique')->with('message', 'La réservation a été effectuée avec succès!');
     }
 
@@ -72,7 +63,6 @@ class ReservationController extends Controller
      */
     public function show(User $user)
     {
-        // return view('chauffeur.home', ['user' => $user]);
     }
 
     /**
@@ -95,19 +85,32 @@ class ReservationController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
-    {
-        //
+{
+    try {
+        $reservation = Reservation::findOrFail($id);
+        
+        if ($reservation->user_id != auth()->user()->id) {
+            return redirect()->back()->with('error', 'Vous n\'êtes pas autorisé à supprimer cette réservation.');
+        }
+        
+        $reservation->delete();
+        
+        return redirect()->route('passager.historique')->with('success', 'La réservation a été supprimée avec succès.');
+    } catch (\Exception $e) {
+        return redirect()->back()->with('error', 'Une erreur s\'est produite lors de la suppression de la réservation.');
     }
+}
+    
+    
+
 
 
 
     public function reserver(Route $route)
     {
         try {
-            // Get the authenticated user
             $user = auth()->user();
 
-            // Create a new reservation record
             Reservation::create([
                 'user_id' => $user->id,
                 'date' => $route->date,
@@ -118,10 +121,9 @@ class ReservationController extends Controller
 
             $chauffeurId = $route->user_id;
 
-            // Create a new record in the ChauffeurPassager table
             ChauffeurPassager::create([
                 'chauffeur_id' => $chauffeurId,
-                'passager_id' => $user->id, // Pass the user's id
+                'passager_id' => $user->id,
                 'route_id' => $route->id,
             ]);
 
@@ -134,10 +136,8 @@ class ReservationController extends Controller
     public function historique()
     {
 
-        // Get the authenticated user's reservations
         $reservations = auth()->user()->reservations;
 
-        // Pass the reservations to the view
         return view('passager.historique', ['reservations' => $reservations]);
     }
 
@@ -187,23 +187,37 @@ class ReservationController extends Controller
         return view('chauffeur.historique', ['routes' => $routes, 'chauffeurs' => $chauffeurs]);
     }
 
-  
-        public function updateStatut(Request $request, $user)
-        {
-            $newStatut = $request->input('statut');
 
-            // Fetch the user based on the provided ID
-            $user = User::findOrFail($user);
+    public function updateStatut(Request $request, $user)
+    {
+        $newStatut = $request->input('statut');
 
-            // Update the user's status
-            $user->update([
-                'statut' => $newStatut,
-            ]);
+        $user = User::findOrFail($user);
 
-            // Redirect back to the profile edit page
-            return redirect()->back()->with('status', 'Statut updated successfully.');
-        }
+        $user->update([
+            'statut' => $newStatut,
+        ]);
+
+        return redirect()->back()->with('status', 'Statut updated successfully.');
+    }
+
+
+    public function commentaire(Request $request, $id)
+    {
+        $request->validate([
+            'commentaire' => 'required|string|max:255', 
+        ]);
+
+        $reservation = Reservation::findOrFail($id);
+
+        $reservation->commentaire = $request->commentaire;
+        $reservation->save();
+
+        return redirect()->back()->with('success', 'Comment added successfully.');
+    }
+}
+
 
 
    
-}
+
